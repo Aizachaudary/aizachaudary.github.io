@@ -8,17 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#FAF6F0;
-  --cream-deep:#F2EBE1;
-  --card:#FFFFFF;
-  --card-soft:#EFE6D8;
-  --ink:#1C1410;
-  --brown:#8B5E3C;
-  --brown-deep:#6B4528;
-  --brown-light:#C9A57B;
-  --muted:#6B5D52;
-  --muted-light:#978675;
-  --line:#E3D8C8;
+  --cream:#F4EBE0;
+  --cream-deep:#E9DCC8;
+  --card:#FFFCF8;
+  --card-soft:#E2D2B8;
+  --ink:#160F0A;
+  --brown:#6B4226;
+  --brown-deep:#4A2C18;
+  --brown-light:#A9794F;
+  --muted:#5C4736;
+  --muted-light:#85705A;
+  --line:#D8C5A8;
   --green:#4A7A52;
   --serif:'Fraunces', serif;
   --sans:'Inter', sans-serif;
@@ -224,9 +224,10 @@ h2.section-h{
 /* ---------- Education ---------- */
 .edu-card{
   background:var(--card);border:1px solid var(--line);border-radius:20px;
-  padding:30px 32px;display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:16px;max-width:760px;margin:0 auto;
+  padding:26px 28px;display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:16px;max-width:760px;
 }
+#about .edu-card{margin:0;}
 .edu-left .edu-school{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:6px;}
 .edu-left .edu-degree{font-size:14px;color:var(--muted);}
 .edu-gpa-badge{
@@ -254,7 +255,29 @@ h2.section-h{
 .final-cta .btn-primary{background:var(--brown-light);color:var(--ink);}
 .final-cta .btn-primary:hover{background:#D9BB95;}
 
-/* ---------- Footer ---------- */
+.about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:center;}
+@media (max-width:780px){.about-grid{grid-template-columns:1fr;gap:32px;}}
+.about-photo{
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 30px 60px -25px rgba(22,15,10,0.35);
+  border:1px solid var(--line);
+}
+.about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.about-bio p{color:var(--muted);font-size:15.5px;margin-bottom:16px;max-width:480px;}
+.about-bio p strong{color:var(--ink);}
+
+/* ---------- Contact links ---------- */
+.contact-links-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:6px;}
+.contact-link-btn{
+  display:inline-flex;align-items:center;gap:9px;
+  background:rgba(255,255,255,0.08);color:var(--cream);
+  padding:13px 22px;border-radius:30px;font-size:14.5px;font-weight:500;
+  border:1px solid rgba(255,255,255,0.18);
+  transition:background 0.2s, border-color 0.2s;
+}
+.contact-link-btn:hover{background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.32);}
+.contact-link-btn.whatsapp{background:#25D366;color:#0B2412;border:none;}
+.contact-link-btn.whatsapp:hover{background:#1FBD5A;}
 footer{padding:48px 0 36px;border-top:1px solid var(--line);}
 .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
 .footer-logo{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:8px;}
@@ -498,14 +521,26 @@ footer{padding:48px 0 36px;border-top:1px solid var(--line);}
 
 <section id="about">
   <div class="wrap">
-    <div class="section-tag">Background</div>
-    <h2 class="section-h">Education</h2>
-    <div class="edu-card">
-      <div class="edu-left">
-        <div class="edu-school">Information Technology University, Lahore</div>
-        <div class="edu-degree">BS Artificial Intelligence · 2nd Year, 4th Semester · Sep 2024 – Present</div>
+    <div class="section-tag">About</div>
+    <h2 class="section-h">The person behind the projects</h2>
+
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="assets/aiza.jpg" alt="Aiza Shahzad">
       </div>
-      <div class="edu-gpa-badge">CGPA 3.19 / 4.0</div>
+      <div class="about-bio">
+        <p>I'm a <strong>2nd-year BS Artificial Intelligence student</strong> at Information Technology University, Lahore. I care less about finishing an assignment and more about whether something actually <strong>runs</strong> — which is why most of my projects end in a real deployment, not just a repo with a README.</p>
+        <p>My work leans toward the <strong>data-and-infrastructure side of AI</strong> — streaming pipelines, vector search, multi-database architecture — but I'm just as comfortable building a product end to end when a project calls for it.</p>
+        <p>Right now, I'm looking for an <strong>internship</strong> where I can work on real systems at scale, alongside people who care about shipping as much as I do.</p>
+
+        <div class="edu-card" style="margin-top:28px;margin-left:0;">
+          <div class="edu-left">
+            <div class="edu-school">Information Technology University, Lahore</div>
+            <div class="edu-degree">BS Artificial Intelligence · 2nd Year, 4th Semester</div>
+          </div>
+          <div class="edu-gpa-badge">CGPA 3.19 / 4.0</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -536,7 +571,10 @@ footer{padding:48px 0 36px;border-top:1px solid var(--line);}
     <div class="final-cta">
       <h2>Looking for an intern who ships?</h2>
       <p>I'm actively looking for AI or software engineering internships where I can work on real systems at scale. Let's talk.</p>
-      <a class="btn btn-primary" href="mailto:aizashahzad25@gmail.com">Email me →</a>
+      <div class="contact-links-row">
+        <a class="contact-link-btn whatsapp" href="https://wa.me/923334367214" target="_blank" rel="noopener">💬 WhatsApp: +92 333 4367214</a>
+        <a class="contact-link-btn" href="mailto:aizashahzad25@gmail.com">✉ Email me</a>
+      </div>
     </div>
   </div>
 </section>
@@ -558,6 +596,7 @@ footer{padding:48px 0 36px;border-top:1px solid var(--line);}
         <div class="footer-col">
           <div class="footer-col-title">Connect</div>
           <a href="mailto:aizashahzad25@gmail.com">Email</a>
+          <a href="https://wa.me/923334367214" target="_blank" rel="noopener">WhatsApp</a>
           <a href="https://linkedin.com/in/aiza-shahzad" target="_blank" rel="noopener">LinkedIn</a>
           <a href="https://github.com/Aizachaudary" target="_blank" rel="noopener">GitHub</a>
         </div>
