@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Restomatic — Aiza Shahzad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="repo-name">aiza-shahzad</div>
+      <div class="repo-sub">public · AI Engineer</div>
+      <div class="status-line"><span class="status-dot"></span> open to internships</div>
+    </div>
+    <nav class="tree">
+      <a class="tree-item" href="../index.html"><span class="icon">⌂</span> home <span class="ext">.html</span></a>
+      <a class="tree-item" href="../about.html"><span class="icon">◎</span> about <span class="ext">.md</span></a>
+      <a class="tree-item active" href="../projects.html"><span class="icon">◆</span> projects <span class="ext">.json</span></a>
+      <div class="tree-sub">
+        <a class="tree-item" href="dbms-platform.html"><span class="icon">›</span> dbms-platform</a>
+        <a class="tree-item" href="hairgenie.html"><span class="icon">›</span> hairgenie</a>
+        <a class="tree-item active" href="restomatic.html"><span class="icon">›</span> restomatic</a>
+      </div>
+      <a class="tree-item" href="../contact.html"><span class="icon">↗</span> contact <span class="ext">.txt</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="https://github.com/Aizachaudary" target="_blank" rel="noopener">↳ github.com/Aizachaudary</a>
+      <a href="https://linkedin.com/in/aiza-shahzad" target="_blank" rel="noopener">↳ linkedin.com/in/aiza-shahzad</a>
+      <a href="mailto:aizashahzad25@gmail.com">↳ aizashahzad25@gmail.com</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="tabbar">
+      <div class="tab"><a href="../projects.html" style="color:inherit;">projects.json</a></div>
+      <div class="tab current">restomatic.md</div>
+    </div>
+
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../index.html">~</a> / <a href="../projects.html">projects</a> / restomatic.md</div>
+      <span class="project-tag">FULL STACK · AI</span>
+      <h1 class="page-title" style="margin-top:14px;">Restomatic</h1>
+      <p class="page-sub">A deployed restaurant management platform with an AI Food Finder — point your camera at a dish and the app identifies it.</p>
+
+      <div class="case-meta-row">
+        <div class="case-meta-item"><span class="case-meta-label">Team size</span><span class="case-meta-value">2 engineers</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">My role</span><span class="case-meta-value">Backend + AI layer</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Stack</span><span class="case-meta-value">Flutter · Flask · MySQL</span></div>
+        <div class="case-meta-item"><span class="case-meta-label">Status</span><span class="case-meta-value" style="color:var(--green);">Deployed live</span></div>
+      </div>
+    </div>
+
+    <section>
+      <div class="case-block">
+        <h3>Overview</h3>
+        <p>Restomatic is a full-stack restaurant management platform: menus, orders, and operations on one side, paired with a standout feature — an AI Food Finder that identifies a dish from a photo. Built with a teammate, split cleanly across backend/AI and frontend.</p>
+      </div>
+
+      <div class="case-block">
+        <h3>My role: AI Food Finder</h3>
+        <p>The feature takes a photo of food and returns the closest matching menu item, combining image recognition with fuzzy text matching to handle cases where visual recognition alone isn't confident enough:</p>
+        <div class="code-panel">
+          <div class="code-line"><span class="line-no">1</span><span class="code-comment"># food_finder.py</span></div>
+          <div class="code-line"><span class="line-no">2</span><span class="code-kw">def</span> <span class="code-fn">find_dish</span>(image):</div>
+          <div class="code-line"><span class="line-no">3</span>    candidates = image_recognition(image)</div>
+          <div class="code-line"><span class="line-no">4</span>    <span class="code-kw">if</span> confidence(candidates) &lt; threshold:</div>
+          <div class="code-line"><span class="line-no">5</span>        candidates = fuzzy_match(candidates, menu_db)</div>
+          <div class="code-line"><span class="line-no">6</span>    <span class="code-kw">return</span> best_match(candidates)</div>
+        </div>
+        <p style="margin-top:16px;">On the backend side, I built the Flask API layer connecting the Flutter frontend to MySQL for menu/order data, and the AI service handling the image-to-dish matching pipeline.</p>
+      </div>
+
+      <div class="case-block">
+        <h3>Challenges</h3>
+        <div class="challenge-list">
+          <div class="challenge-item">
+            <div class="ch-title">Real-world photos are messy</div>
+            <div class="ch-body">Plating, lighting, and camera angle vary a lot between users. Image recognition alone wasn't reliable enough, which is why a fuzzy-matching fallback against the menu database was necessary to catch ambiguous cases.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="ch-title">Coordinating across a two-person split</div>
+            <div class="ch-body">With one person on backend/AI and the other on frontend, keeping the API contract stable while both sides were still actively changing required clear, early agreement on request/response shapes.</div>
+          </div>
+          <div class="challenge-item">
+            <div class="ch-title">Getting a multi-service app actually deployed</div>
+            <div class="ch-body">Shipping a live deployment — not just a local build — meant making sure the Flutter app, Flask API, and MySQL database were all reachable and correctly configured together in production.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-block">
+        <h3>Result</h3>
+        <div class="result-strip">
+          <div class="result-pill"><div class="r-label">Deployment</div><div class="r-value">Live</div></div>
+          <div class="result-pill"><div class="r-label">Core feature</div><div class="r-value">AI Food Finder</div></div>
+          <div class="result-pill"><div class="r-label">Match method</div><div class="r-value">Vision + fuzzy fallback</div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="case-nav">
+      <a href="hairgenie.html">← HairGenie</a>
+      <a href="../projects.html">All projects →</a>
+    </div>
+
+    <footer>
+      <span>© 2026 Aiza Shahzad</span>
+      <span>built with intent, not a template</span>
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>
