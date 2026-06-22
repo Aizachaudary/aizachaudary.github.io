@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aiza Shahzad — AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shell">
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="repo-name">aiza-shahzad</div>
+      <div class="repo-sub">public · AI Engineer</div>
+      <div class="status-line"><span class="status-dot"></span> open to internships</div>
+    </div>
+    <nav class="tree">
+      <a class="tree-item active" href="index.html"><span class="icon">⌂</span> home <span class="ext">.html</span></a>
+      <a class="tree-item" href="about.html"><span class="icon">◎</span> about <span class="ext">.md</span></a>
+      <a class="tree-item" href="projects.html"><span class="icon">◆</span> projects <span class="ext">.json</span></a>
+      <a class="tree-item" href="contact.html"><span class="icon">↗</span> contact <span class="ext">.txt</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <a href="https://github.com/Aizachaudary" target="_blank" rel="noopener">↳ github.com/Aizachaudary</a>
+      <a href="https://linkedin.com/in/aiza-shahzad" target="_blank" rel="noopener">↳ linkedin.com/in/aiza-shahzad</a>
+      <a href="mailto:aizashahzad25@gmail.com">↳ aizashahzad25@gmail.com</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="tabbar">
+      <div class="tab current">index.html</div>
+    </div>
+
+    <section class="hero">
+      <div class="hero-eyebrow">$ whoami<span class="blink"></span></div>
+      <h1 class="hero-name">Aiza <span class="accent">Shahzad</span></h1>
+      <p class="hero-role">2nd-year <strong>BS Artificial Intelligence</strong> student at ITU Lahore who builds <strong>real, running systems</strong> — not just notebooks. Streaming pipelines, vector search, and full-stack AI products, end to end.</p>
+      <div class="hero-meta">
+        <span>📍 Lahore, Pakistan</span>
+        <span>🎓 ITU · CGPA 3.19/4.0</span>
+        <span>🟢 Available for internships</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="projects.html">View projects →</a>
+        <a class="btn btn-ghost" href="contact.html">Get in touch</a>
+      </div>
+
+      <div class="query-panel">
+        <div class="query-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="query-bar-title">nl2sql — interactive query</span>
+        </div>
+        <div class="query-body">
+          <div class="query-line"><span class="query-prompt">&gt;</span> <span class="query-text">show me students who ship production systems, not just coursework</span></div>
+          <div class="query-result">
+            <span class="kw">SELECT</span> name, stack <span class="kw">FROM</span> students<br>
+            <span class="kw">WHERE</span> deployed = <span class="str">true</span><br>
+            &nbsp;&nbsp;<span class="kw">AND</span> projects.count &gt;= <span class="num">7</span><br>
+            &nbsp;&nbsp;<span class="kw">AND</span> stack <span class="kw">LIKE</span> <span class="str">'%Kafka%Spark%FAISS%'</span>;<br><br>
+            <span class="code-comment">-- 1 row returned: Aiza Shahzad</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-label">snapshot</div>
+      <h2 class="section-title">featured.json</h2>
+      <div class="project-grid">
+
+        <div class="project-card linked" onclick="window.location='projects/dbms-platform.html'" style="cursor:pointer;">
+          <span class="project-tag">DATABASE · AI</span>
+          <div class="project-card-title">Advanced DBMS Platform</div>
+          <p class="project-card-desc">Real-time streaming pipeline with a natural-language-to-SQL interface.</p>
+          <div class="project-stack">
+            <span class="chip">Kafka</span><span class="chip">Spark</span><span class="chip">FAISS</span>
+          </div>
+          <div class="card-link-row">view case study →</div>
+        </div>
+
+        <div class="project-card linked" onclick="window.location='projects/hairgenie.html'" style="cursor:pointer;">
+          <span class="project-tag">FULL STACK</span>
+          <div class="project-card-title">HairGenie</div>
+          <p class="project-card-desc">AI-powered haircare recommendations with a multi-database architecture.</p>
+          <div class="project-stack">
+            <span class="chip">Next.js</span><span class="chip">Supabase</span>
+          </div>
+          <div class="card-link-row">view case study →</div>
+        </div>
+
+        <div class="project-card linked" onclick="window.location='projects/restomatic.html'" style="cursor:pointer;">
+          <span class="project-tag">FULL STACK · AI</span>
+          <div class="project-card-title">Restomatic</div>
+          <p class="project-card-desc">Deployed restaurant platform with an AI Food Finder from photos.</p>
+          <div class="project-stack">
+            <span class="chip">Flutter</span><span class="chip">Flask</span>
+          </div>
+          <div class="card-link-row">view case study →</div>
+        </div>
+
+      </div>
+      <div style="margin-top:24px;">
+        <a class="btn btn-ghost" href="projects.html">See all 8 projects →</a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 Aiza Shahzad</span>
+      <span>built with intent, not a template</span>
+    </footer>
+  </main>
+</div>
+
+</body>
+</html>
