@@ -3,554 +3,455 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aiza Shahzad — AI & Software Engineer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<title>Aiza Shahzad — AI &amp; Software Engineering</title>
 <style>
 :root{
---cream:#F4EBE0;
---cream-deep:#E9DCC8;
---card:#FFFCF8;
---card-soft:#E2D2B8;
---ink:#160F0A;
---brown:#6B4226;
---brown-deep:#4A2C18;
---brown-light:#A9794F;
---muted:#5C4736;
---muted-light:#85705A;
---line:#D8C5A8;
---green:#4A7A52;
---serif:'Fraunces', serif;
---sans:'Inter', sans-serif;
+  --ink:#14171C;
+  --bg:#F6F5F2;
+  --sidebar:#14171C;
+  --sidebar-text:#9BA0AA;
+  --sidebar-text-active:#F6F5F2;
+  --accent:#2D5B45;
+  --accent-soft:#E4ECE7;
+  --card:#FFFFFF;
+  --line:#D8D6CF;
+  --muted:#4A4E55;
+  --serif:'Times New Roman', Times, serif;
+  --sans:'Times New Roman', Times, serif;
+  --mono:'Times New Roman', Times, serif;
 }
 *{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
 body{
-background:var(--cream);
-color:var(--ink);
-font-family:var(--sans);
-line-height:1.6;
-font-size:16px;
--webkit-font-smoothing:antialiased;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.6;
 }
-a{color:inherit;text-decoration:none;}
-img{max-width:100%;display:block;}
-::selection{background:var(--brown-light);color:var(--ink);}
-.wrap{max-width:1140px;margin:0 auto;padding:0 32px;}
-@media (max-width:640px){.wrap{padding:0 20px;}}
-/* ---------- Nav ---------- */
-nav{
-position:sticky;top:0;z-index:50;
-background:rgba(250,246,240,0.88);
-backdrop-filter:blur(10px);
-border-bottom:1px solid var(--line);
+a{color:inherit;}
+h1,h2,h3{font-family:var(--serif);font-weight:700;}
+.app{display:flex;min-height:100vh;}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  width:260px;flex-shrink:0;
+  background:var(--sidebar);color:var(--sidebar-text);
+  padding:32px 24px;
+  position:sticky;top:0;height:100vh;
+  display:flex;flex-direction:column;
 }
-.nav-inner{
-max-width:1140px;margin:0 auto;padding:18px 32px;
-display:flex;align-items:center;justify-content:space-between;
+.sidebar-name{font-family:var(--serif);color:#fff;font-size:20px;font-weight:600;margin-bottom:2px;}
+.sidebar-title{font-size:13px;color:var(--sidebar-text);margin-bottom:28px;}
+.sidebar-nav{display:flex;flex-direction:column;gap:2px;flex:1;}
+.nav-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 12px;border-radius:6px;
+  font-size:14px;color:var(--sidebar-text);
+  cursor:pointer;background:none;border:none;text-align:left;width:100%;
+  font-family:var(--sans);
 }
-@media (max-width:640px){.nav-inner{padding:16px 20px;}}
-.logo{font-family:var(--serif);font-weight:600;font-size:20px;color:var(--ink);}
-.nav-links{display:flex;gap:32px;font-size:14.5px;color:var(--muted);}
-.nav-links a:hover{color:var(--brown);}
-@media (max-width:760px){.nav-links{display:none;}}
-.nav-cta{
-background:var(--ink);color:var(--cream);
-padding:10px 20px;border-radius:30px;font-size:14px;font-weight:500;
-transition:background 0.2s;
+.nav-item:hover{background:rgba(255,255,255,0.06);color:#fff;}
+.nav-item.active{background:rgba(255,255,255,0.1);color:#fff;}
+.nav-item .dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:0.5;flex-shrink:0;}
+.nav-item.active .dot{background:var(--accent);opacity:1;box-shadow:0 0 0 3px rgba(45,91,69,0.35);}
+.sidebar-foot{border-top:1px solid rgba(255,255,255,0.1);padding-top:18px;margin-top:18px;}
+.sidebar-foot a{display:block;font-size:13px;color:var(--sidebar-text);padding:5px 0;}
+.sidebar-foot a:hover{color:#fff;}
+
+/* ---------- Main ---------- */
+.main{flex:1;min-width:0;}
+.topbar{
+  display:none;
+  align-items:center;justify-content:space-between;
+  padding:16px 20px;background:var(--sidebar);color:#fff;
 }
-.nav-cta:hover{background:var(--brown-deep);}
-/* ---------- Hero ---------- */
-.hero{padding:90px 0 70px;}
-@media (max-width:640px){.hero{padding:50px 0 40px;}}
-.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:56px;align-items:center;}
-@media (max-width:880px){.hero-grid{grid-template-columns:1fr;gap:40px;}}
-.eyebrow{
-display:inline-flex;align-items:center;gap:8px;
-background:var(--card-soft);color:var(--brown-deep);
-padding:7px 16px;border-radius:30px;font-size:13px;font-weight:500;
-margin-bottom:24px;
+.topbar button{background:none;border:1px solid rgba(255,255,255,0.3);color:#fff;padding:6px 10px;border-radius:6px;font-family:var(--sans);}
+.content{max-width:880px;margin:0 auto;padding:56px 48px 80px;}
+@media (max-width:900px){.content{padding:36px 24px 60px;}}
+.panel{display:none;}
+.panel.active{display:block;}
+.panel-eyebrow{font-size:13px;color:var(--accent);font-family:var(--mono);margin-bottom:8px;}
+.panel h1{font-size:32px;margin-bottom:14px;}
+.panel-lede{font-size:16px;color:var(--muted);max-width:600px;margin-bottom:36px;}
+
+/* ---------- Overview ---------- */
+.stat-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:44px;}
+.stat-box{
+  background:var(--card);border:1px solid var(--line);border-radius:8px;
+  padding:16px 20px;min-width:130px;
 }
-.eyebrow::before{content:"●";color:var(--green);font-size:10px;}
-h1.headline{
-font-family:var(--serif);
-font-size:clamp(38px,5.2vw,60px);
-font-weight:600;
-line-height:1.08;
-letter-spacing:-0.01em;
-color:var(--ink);
-margin-bottom:22px;
-}
-h1.headline em{color:var(--brown);font-style:normal;}
-.hero-sub{
-font-size:18px;color:var(--muted);max-width:480px;margin-bottom:32px;
-}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:28px;}
-.btn{
-display:inline-flex;align-items:center;gap:8px;
-padding:14px 26px;border-radius:30px;font-size:15px;font-weight:600;
-transition:transform 0.15s, box-shadow 0.15s, background 0.15s;
-}
-.btn-primary{background:var(--brown);color:#fff;}
-.btn-primary:hover{background:var(--brown-deep);box-shadow:0 8px 20px -8px rgba(139,94,60,0.5);}
-.btn-secondary{background:var(--card);color:var(--ink);border:1px solid var(--line);}
-.btn-secondary:hover{border-color:var(--brown-light);}
-.hero-note{font-size:13px;color:var(--muted-light);}
-/* ---------- Hero visual card ---------- */
-.hero-card{
-background:var(--card);
-border-radius:24px;
-padding:28px;
-box-shadow:0 30px 70px -30px rgba(28,20,16,0.25);
-border:1px solid var(--line);
-}
-.hero-card-greet{font-size:14px;color:var(--muted);margin-bottom:4px;}
-.hero-card-name{font-family:var(--serif);font-size:22px;font-weight:600;margin-bottom:18px;}
-.profile-row{
-display:flex;justify-content:space-between;align-items:center;
-background:var(--cream-deep);border-radius:16px;padding:16px 18px;margin-bottom:14px;
-}
-.profile-row-label{font-size:13px;color:var(--muted);}
-.profile-score{font-family:var(--serif);font-size:26px;font-weight:600;color:var(--brown);}
-.checklist{display:flex;flex-direction:column;gap:10px;margin-bottom:18px;}
-.check-item{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink);}
-.check-mark{
-width:18px;height:18px;border-radius:50%;background:var(--green);
-display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;flex-shrink:0;
-}
-.stat-row{display:flex;gap:10px;}
-.stat-pill{
-flex:1;background:var(--cream-deep);border-radius:14px;padding:14px 16px;
-}
-.stat-pill .label{font-size:11.5px;color:var(--muted-light);margin-bottom:4px;}
-.stat-pill .value{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--ink);}
-.stat-pill .value.up{color:var(--green);}
-/* ---------- Section shared ---------- */
-section{padding:80px 0;}
-@media (max-width:640px){section{padding:50px 0;}}
-.section-tag{
-text-align:center;font-size:13px;font-weight:600;color:var(--brown);
-text-transform:uppercase;letter-spacing:0.08em;margin-bottom:14px;
-}
-h2.section-h{
-font-family:var(--serif);font-size:clamp(28px,3.5vw,40px);font-weight:600;
-text-align:center;color:var(--ink);margin-bottom:16px;letter-spacing:-0.01em;
-}
-.section-sub{text-align:center;color:var(--muted);font-size:16px;max-width:560px;margin:0 auto 56px;}
+.stat-box .num{font-family:var(--serif);font-size:24px;font-weight:600;}
+.stat-box .lbl{font-size:12.5px;color:var(--muted);margin-top:2px;}
+.block-title{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:14px;font-weight:600;}
+.summary-block{margin-bottom:44px;}
+.summary-block p{color:var(--muted);max-width:640px;margin-bottom:12px;}
+.summary-block p strong{color:var(--ink);}
+.approach-list{display:flex;flex-direction:column;gap:16px;max-width:640px;}
+.approach-item{display:flex;gap:16px;}
+.approach-num{font-family:var(--mono);font-size:13px;color:var(--accent);padding-top:2px;flex-shrink:0;width:20px;}
+.approach-body h3{font-size:15px;margin-bottom:4px;}
+.approach-body p{color:var(--muted);font-size:14px;}
+
 /* ---------- Projects ---------- */
-.projects-section{background:var(--cream-deep);}
-.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-@media (max-width:880px){.project-grid{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:640px){.project-grid{grid-template-columns:1fr;}}
-.proj-card{
-background:var(--card);border-radius:20px;padding:28px 26px;
-border:1px solid var(--line);
-display:flex;flex-direction:column;gap:14px;
-transition:transform 0.2s, box-shadow 0.2s;
+.proj-row{
+  border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:6px;background:var(--card);
+  padding:20px 24px;margin-bottom:16px;
+  display:grid;grid-template-columns:200px 1fr;gap:24px;
+  transition:box-shadow 0.15s;
 }
-.proj-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(28,20,16,0.18);}
-.proj-icon{
-width:46px;height:46px;border-radius:13px;
-background:var(--card-soft);
-display:flex;align-items:center;justify-content:center;
-font-size:20px;
-}
-.proj-card-title{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--ink);}
-.proj-card-desc{font-size:14px;color:var(--muted);flex:1;}
-.proj-meta{font-size:12px;color:var(--muted-light);margin-top:-6px;}
-.proj-stack{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
-.proj-chip{
-font-size:11.5px;color:var(--brown-deep);background:var(--card-soft);
-padding:4px 10px;border-radius:20px;font-weight:500;
-}
-.proj-card.featured{
-background:linear-gradient(150deg, var(--ink) 0%, #2A1F18 100%);
-border:none;
-}
-.proj-card.featured .proj-card-title, .proj-card.featured .proj-card-desc{color:var(--cream);}
-.proj-card.featured .proj-card-desc{color:#D8CBBB;}
-.proj-card.featured .proj-icon{background:rgba(255,255,255,0.1);}
-.proj-card.featured .proj-meta{color:var(--brown-light);}
-.proj-card.featured .proj-chip{background:rgba(255,255,255,0.12);color:var(--cream);}
-.proj-card.featured .live-badge{
-display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:#9BD9A6;font-weight:600;
-}
-.proj-card.featured .live-badge::before{content:"●";font-size:8px;}
-.badge-deployed{
-display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--green);font-weight:600;
-}
-.badge-deployed::before{content:"●";font-size:8px;}
-/* ---------- How it works / process ---------- */
-.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
-@media (max-width:760px){.process-grid{grid-template-columns:1fr;gap:28px;}}
-.process-step{text-align:center;padding:0 12px;}
-.step-num{
-font-family:var(--serif);font-size:15px;font-weight:600;color:var(--brown);
-width:42px;height:42px;border-radius:50%;border:1.5px solid var(--brown-light);
-display:flex;align-items:center;justify-content:center;margin:0 auto 18px;
-}
-.step-title{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:8px;}
-.step-body{font-size:14px;color:var(--muted);max-width:280px;margin:0 auto;}
+.proj-row:hover{box-shadow:0 4px 14px -6px rgba(20,23,28,0.15);}
+@media (max-width:700px){.proj-row{grid-template-columns:1fr;gap:8px;}}
+.proj-name{font-family:var(--serif);font-size:17px;font-weight:600;}
+.proj-status{display:block;font-size:12px;font-family:var(--mono);margin-top:6px;}
+.proj-status.live{color:var(--accent);}
+.proj-status.coursework{color:var(--muted);}
+.proj-desc{color:var(--muted);font-size:14.5px;margin-bottom:10px;}
+.proj-stack{font-size:12.5px;color:var(--muted);font-family:var(--mono);margin-bottom:10px;}
+.proj-links a{font-size:13px;color:var(--accent);margin-right:18px;border-bottom:1px solid transparent;}
+.proj-links a:hover{border-color:var(--accent);}
+.proj-note{font-size:13px;color:var(--muted);font-style:italic;margin-top:8px;}
+
 /* ---------- Skills ---------- */
-.skills-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-@media (max-width:880px){.skills-wrap{grid-template-columns:repeat(2,1fr);}}
-@media (max-width:480px){.skills-wrap{grid-template-columns:1fr;}}
-.skill-card{
-background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 22px;
-}
-.skill-card-title{font-size:13px;font-weight:600;color:var(--brown);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:14px;}
-.skill-tag-row{display:flex;flex-wrap:wrap;gap:7px;}
+.skill-group{margin-bottom:28px;}
+.skill-group-title{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px;font-weight:600;}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;}
 .skill-tag{
-font-size:13px;background:var(--cream-deep);color:var(--ink);
-padding:6px 12px;border-radius:20px;
+  font-size:13px;font-family:var(--mono);color:var(--ink);
+  background:var(--card);border:1px solid var(--line);
+  padding:5px 12px;border-radius:5px;
 }
-.coursework-row{
-margin-top:40px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
-}
-.course-pill{
-font-size:13px;color:var(--muted);border:1px solid var(--line);
-padding:7px 16px;border-radius:30px;background:var(--card);
-}
+.coursework-block{margin-top:40px;}
+.coursework-list{color:var(--muted);font-size:14px;line-height:1.9;}
+
 /* ---------- Education ---------- */
-.edu-card{
-background:var(--card);border:1px solid var(--line);border-radius:20px;
-padding:26px 28px;display:flex;justify-content:space-between;align-items:center;
-flex-wrap:wrap;gap:16px;max-width:760px;
+.edu-card{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:24px;margin-bottom:20px;}
+.edu-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:6px;}
+.edu-school{font-family:var(--serif);font-size:18px;font-weight:600;}
+.edu-gpa{font-family:var(--mono);font-size:14px;color:var(--accent);}
+.edu-meta{color:var(--muted);font-size:14px;}
+
+/* ---------- Contact ---------- */
+.contact-list{display:flex;flex-direction:column;gap:10px;max-width:440px;}
+.contact-row{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:14px 18px;border:1px solid var(--line);border-radius:6px;background:var(--card);
 }
-#about .edu-card{margin:0;}
-.edu-left .edu-school{font-family:var(--serif);font-size:20px;font-weight:600;margin-bottom:6px;}
-.edu-left .edu-degree{font-size:14px;color:var(--muted);}
-.edu-gpa-badge{
-background:var(--card-soft);color:var(--brown-deep);
-font-weight:600;font-size:15px;padding:10px 18px;border-radius:14px;white-space:nowrap;
-}
-/* ---------- Testimonial-style "what I bring" ---------- */
-.bring-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-@media (max-width:760px){.bring-grid{grid-template-columns:1fr;}}
-.bring-card{
-background:var(--card);border-radius:20px;padding:28px;border:1px solid var(--line);
-}
-.bring-quote{font-family:var(--serif);font-size:17px;line-height:1.5;color:var(--ink);margin-bottom:16px;}
-.bring-who{font-size:13px;color:var(--muted);}
-.bring-who strong{color:var(--brown-deep);}
-/* ---------- Final CTA ---------- */
-.final-cta{
-background:var(--ink);border-radius:32px;padding:64px 48px;text-align:center;color:var(--cream);
-}
-@media (max-width:640px){.final-cta{padding:44px 24px;border-radius:24px;}}
-.final-cta h2{font-family:var(--serif);font-size:clamp(26px,4vw,38px);font-weight:600;margin-bottom:16px;}
-.final-cta p{color:#D8CBBB;max-width:480px;margin:0 auto 30px;font-size:16px;}
-.final-cta .btn-primary{background:var(--brown-light);color:var(--ink);}
-.final-cta .btn-primary:hover{background:#D9BB95;}
-.about-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:center;}
-@media (max-width:780px){.about-grid{grid-template-columns:1fr;gap:32px;}}
-.about-photo{
-border-radius:24px;overflow:hidden;
-box-shadow:0 30px 60px -25px rgba(22,15,10,0.35);
-border:1px solid var(--line);
-}
-.about-photo img{width:100%;height:100%;object-fit:cover;display:block;}
-.about-bio p{color:var(--muted);font-size:15.5px;margin-bottom:16px;max-width:480px;}
-.about-bio p strong{color:var(--ink);}
-/* ---------- Contact links ---------- */
-.contact-links-row{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:6px;}
-.contact-link-btn{
-display:inline-flex;align-items:center;gap:9px;
-background:rgba(255,255,255,0.08);color:var(--cream);
-padding:13px 22px;border-radius:30px;font-size:14.5px;font-weight:500;
-border:1px solid rgba(255,255,255,0.18);
-transition:background 0.2s, border-color 0.2s;
-}
-.contact-link-btn:hover{background:rgba(255,255,255,0.16);border-color:rgba(255,255,255,0.32);}
-.contact-link-btn.whatsapp{background:#25D366;color:#0B2412;border:none;}
-.contact-link-btn.whatsapp:hover{background:#1FBD5A;}
-footer{padding:48px 0 36px;border-top:1px solid var(--line);}
-.footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
-.footer-logo{font-family:var(--serif);font-size:18px;font-weight:600;margin-bottom:8px;}
-.footer-tag{font-size:13px;color:var(--muted-light);max-width:240px;}
-.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
-.footer-col-title{font-size:12px;color:var(--muted-light);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
-.footer-col a{display:block;font-size:14px;color:var(--muted);padding:4px 0;}
-.footer-col a:hover{color:var(--brown);}
-.footer-bottom{margin-top:32px;padding-top:24px;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted-light);text-align:center;}
+.contact-label{font-size:13px;color:var(--muted);}
+.contact-value a{font-size:14.5px;color:var(--ink);}
+.contact-value a:hover{color:var(--accent);}
+
 @media (prefers-reduced-motion: reduce){*{transition:none !important;}}
+
+/* ---------- Mobile sidebar ---------- */
+@media (max-width:820px){
+  .app{flex-direction:column;}
+  .sidebar{
+    display:none;position:fixed;inset:0 0 0 0;height:100vh;width:100%;z-index:40;
+    overflow-y:auto;
+  }
+  .sidebar.open{display:flex;}
+  .topbar{display:flex;position:sticky;top:0;z-index:30;}
+  .content{padding-top:32px;}
+}
 </style>
 </head>
 <body>
-<nav>
-<div class="nav-inner">
-<div class="logo">Aiza Shahzad</div>
-<div class="nav-links">
-<a href="#projects">Projects</a>
-<a href="#process">How I work</a>
-<a href="#skills">Skills</a>
-<a href="#about">About</a>
+<div class="app">
+
+  <div class="topbar">
+    <div class="sidebar-name" style="color:#fff;">Aiza Shahzad</div>
+    <button id="menuToggle">Menu</button>
+  </div>
+
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-name">Aiza Shahzad</div>
+    <div class="sidebar-title">AI &amp; Software Engineering</div>
+    <nav class="sidebar-nav" id="nav">
+      <button class="nav-item active" data-panel="overview"><span class="dot"></span> Overview</button>
+      <button class="nav-item" data-panel="projects"><span class="dot"></span> Projects</button>
+      <button class="nav-item" data-panel="skills"><span class="dot"></span> Skills</button>
+      <button class="nav-item" data-panel="education"><span class="dot"></span> Education</button>
+      <button class="nav-item" data-panel="contact"><span class="dot"></span> Contact</button>
+    </nav>
+    <div class="sidebar-foot">
+      <a href="https://github.com/Aizachaudary" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/aiza-shahzad" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:aizashahzad25@gmail.com">Email</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <div class="content">
+
+      <section class="panel active" id="panel-overview">
+        <div class="panel-eyebrow">Overview</div>
+        <h1>AI &amp; software engineering, built to run in production.</h1>
+        <p class="panel-lede">3rd-year BS Artificial Intelligence student at Information Technology University, Lahore. I design systems end to end — from streaming data pipelines and vector search to full-stack products with real users.</p>
+
+        <div class="stat-row">
+          <div class="stat-box"><div class="num">7</div><div class="lbl">Projects built</div></div>
+          <div class="stat-box"><div class="num">5</div><div class="lbl">Fully deployed</div></div>
+          <div class="stat-box"><div class="num">3.21</div><div class="lbl">CGPA / 4.0</div></div>
+          <div class="stat-box"><div class="num">3rd yr</div><div class="lbl">BS AI, ITU Lahore</div></div>
+        </div>
+
+        <div class="summary-block">
+          <div class="block-title">Summary</div>
+          <p>My work leans toward the <strong>data-and-infrastructure side of AI</strong> — streaming pipelines, vector search, multi-database architecture — but I build full products end to end when a project calls for it, including the deployment.</p>
+          <p>Most of my coursework projects don't stop at a working demo on my laptop; they end up live, with a URL, an APK, or a running deployment. I'm currently open to freelance work and collaborations where I can build real systems at scale.</p>
+        </div>
+
+        <div class="block-title">How I approach a project</div>
+        <div class="approach-list">
+          <div class="approach-item">
+            <div class="approach-num">01</div>
+            <div class="approach-body">
+              <h3>Understand the actual constraint</h3>
+              <p>Whether it's "use only foundational libraries" or "must support real-time data," I design around the real limitation rather than a simplified version of it.</p>
+            </div>
+          </div>
+          <div class="approach-item">
+            <div class="approach-num">02</div>
+            <div class="approach-body">
+              <h3>Build the full pipeline</h3>
+              <p>Data layer, logic layer, interface — connected end to end, so the system works as a whole rather than as disconnected pieces.</p>
+            </div>
+          </div>
+          <div class="approach-item">
+            <div class="approach-num">03</div>
+            <div class="approach-body">
+              <h3>Ship it, not just submit it</h3>
+              <p>Where the project allows it, I deploy — a live URL, a published app, or a working demo — since that's the difference between a grade and a portfolio piece.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-projects">
+        <div class="panel-eyebrow">Projects</div>
+        <h1>Selected work</h1>
+        <p class="panel-lede">Seven projects spanning databases, AI/ML, mobile, and full-stack web — five with a live, working deployment.</p>
+
+        <div class="proj-list">
+
+          <div class="proj-row">
+            <div>
+              <div class="proj-name">HairGenie</div>
+              <span class="proj-status live">Live</span>
+            </div>
+            <div>
+              <p class="proj-desc">AI-personalized haircare platform: a hair profile quiz, a weekly routine generator, curated product recommendations, and progress tracking with trend charts and before/after photos.</p>
+              <div class="proj-stack">Next.js · TypeScript · Supabase · PostgreSQL</div>
+              <div class="proj-links">
+                <a href="https://gethairgenie.vercel.app" target="_blank" rel="noopener">Live site</a>
+                <a href="https://github.com/Aizachaudary/HairGenie" target="_blank" rel="noopener">Source code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-row">
+            <div>
+              <div class="proj-name">Search Indexing Engine</div>
+              <span class="proj-status live">Live demo</span>
+            </div>
+            <div>
+              <p class="proj-desc">A search engine built from scratch — custom hash table, AVL tree, and max-heap, with TF-IDF ranking and OR/AND/phrase search. Originally written in C++ for Data Structures; ported to JavaScript for an interactive demo.</p>
+              <div class="proj-stack">C++ · Data Structures · JavaScript</div>
+              <div class="proj-links">
+                <a href="https://search-engine-webapp-zeta.vercel.app" target="_blank" rel="noopener">Live demo</a>
+                <a href="https://github.com/Aizachaudary/search-engine-webapp" target="_blank" rel="noopener">Source code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-row">
+            <div>
+              <div class="proj-name">Zwitter</div>
+              <span class="proj-status live">Live · Play Store</span>
+            </div>
+            <div>
+              <p class="proj-desc">Full-stack Flutter clothing brand app with AI-powered virtual try-on — 3D body scanning and avatar-based fitting, so shoppers can preview an outfit before buying. Includes product listings, cart, and checkout.</p>
+              <div class="proj-stack">Flutter · Dart · 3D scanning · Avatar API</div>
+              <div class="proj-links">
+                <a href="https://github.com/Aizachaudary/zwitter-e-commerce-app" target="_blank" rel="noopener">Source code</a>
+              </div>
+              <p class="proj-note">Group project — I built the AI virtual try-on system (3D scan, avatar fitting, virtual wardrobe) and the core shopping flow.</p>
+            </div>
+          </div>
+
+          <div class="proj-row">
+            <div>
+              <div class="proj-name">Restomatic</div>
+              <span class="proj-status live">Live</span>
+            </div>
+            <div>
+              <p class="proj-desc">Restaurant management system with a Flutter customer portal and Flask backend — live menus, orders, table reservations, and an AI food-recognition feature (photo in, matching dish out). I configured the production deployment: Nginx, HTTPS, reverse proxy, backups, and rollback.</p>
+              <div class="proj-stack">Flutter · Flask · MySQL · Nginx</div>
+              <div class="proj-links">
+                <a href="https://restaurant.nalexustechnologies.com" target="_blank" rel="noopener">Live site</a>
+                <a href="https://github.com/zainabtouseef/restaurant" target="_blank" rel="noopener">Source code (team repo)</a>
+              </div>
+              <p class="proj-note">Group project — repo owned by a teammate. I built the AI food-recognition feature, the Flutter frontend, and the full deployment setup.</p>
+            </div>
+          </div>
+
+          <div class="proj-row">
+            <div>
+              <div class="proj-name">Fake Medicine Detector</div>
+              <span class="proj-status live">Deployed</span>
+            </div>
+            <div>
+              <p class="proj-desc">NLP-based classifier distinguishing genuine from counterfeit medicines, matching extracted text against the official DRAP drug registry. Built using only foundational ML libraries — no pretrained shortcuts.</p>
+              <div class="proj-stack">Python · PyTorch · NLP</div>
+              <div class="proj-links">
+                <a href="https://github.com/Aizachaudary/AIHealthDetector" target="_blank" rel="noopener">Source code</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="proj-row">
+            <div>
+              <div class="proj-name">Advanced DBMS Platform</div>
+              <span class="proj-status coursework">Coursework</span>
+            </div>
+            <div>
+              <p class="proj-desc">Real-time data pipeline combining Kafka stream processing, Spark, and FAISS vector search behind a natural-language-to-SQL interface, letting users query a relational database in plain English. Deployed and debugged the full multi-service stack on Docker.</p>
+              <div class="proj-stack">PostgreSQL · Kafka · Spark · FAISS · FastAPI</div>
+            </div>
+          </div>
+
+          <div class="proj-row">
+            <div>
+              <div class="proj-name">AI Game Suite</div>
+              <span class="proj-status coursework">Coursework</span>
+            </div>
+            <div>
+              <p class="proj-desc">Chess, Snake, Tic-Tac-Toe, and Candy Crush, built in C++ with object-oriented design and game-specific search/AI algorithms — including minimax with alpha-beta pruning for Chess.</p>
+              <div class="proj-stack">C++ · AI Algorithms · OOP</div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section class="panel" id="panel-skills">
+        <div class="panel-eyebrow">Skills</div>
+        <h1>What I build with</h1>
+        <p class="panel-lede">Range across languages, data infrastructure, AI/ML, and full-stack frameworks.</p>
+
+        <div class="skill-group">
+          <div class="skill-group-title">Languages</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span><span class="skill-tag">C++</span>
+            <span class="skill-tag">Dart</span><span class="skill-tag">SQL</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Data &amp; Infrastructure</div>
+          <div class="skill-tags">
+            <span class="skill-tag">PostgreSQL</span><span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Redis</span><span class="skill-tag">Kafka</span>
+            <span class="skill-tag">Spark</span><span class="skill-tag">Docker</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">AI / ML</div>
+          <div class="skill-tags">
+            <span class="skill-tag">PyTorch</span><span class="skill-tag">FAISS</span>
+            <span class="skill-tag">NLP</span><span class="skill-tag">Groq API</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title">Frameworks &amp; Tools</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Flutter</span><span class="skill-tag">FastAPI</span>
+            <span class="skill-tag">Next.js</span><span class="skill-tag">Supabase</span>
+            <span class="skill-tag">Git</span><span class="skill-tag">Nginx</span>
+          </div>
+        </div>
+
+        <div class="coursework-block">
+          <div class="block-title">Relevant coursework</div>
+          <div class="coursework-list">
+            Advanced Database Management Systems · Artificial Intelligence · Programming for AI · Software Engineering · Object-Oriented Programming · Data Structures · Computer Networks · Mobile Application Development · Probability &amp; Statistics · Project Management
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-education">
+        <div class="panel-eyebrow">Education</div>
+        <h1>Academic background</h1>
+
+        <div class="edu-card">
+          <div class="edu-top">
+            <div class="edu-school">Information Technology University, Lahore</div>
+            <div class="edu-gpa">CGPA 3.21 / 4.0</div>
+          </div>
+          <div class="edu-meta">BS Artificial Intelligence · 3rd Year · Sep 2024 – Present</div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-top">
+            <div class="edu-school">KIPS College, Lahore</div>
+          </div>
+          <div class="edu-meta">FSc Pre-Engineering · 998 / 1200 · 2022 – 2024</div>
+        </div>
+      </section>
+
+      <section class="panel" id="panel-contact">
+        <div class="panel-eyebrow">Contact</div>
+        <h1>Get in touch</h1>
+        <p class="panel-lede">Open to freelance work, collaborations, and opportunities where I can build real, deployed systems. Reach out through any of the channels below.</p>
+
+        <div class="contact-list">
+          <div class="contact-row">
+            <span class="contact-label">Email</span>
+            <span class="contact-value"><a href="mailto:aizashahzad25@gmail.com">aizashahzad25@gmail.com</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">WhatsApp</span>
+            <span class="contact-value"><a href="https://wa.me/923334367214" target="_blank" rel="noopener">+92 333 436 7214</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">LinkedIn</span>
+            <span class="contact-value"><a href="https://linkedin.com/in/aiza-shahzad" target="_blank" rel="noopener">linkedin.com/in/aiza-shahzad</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">GitHub</span>
+            <span class="contact-value"><a href="https://github.com/Aizachaudary" target="_blank" rel="noopener">github.com/Aizachaudary</a></span>
+          </div>
+          <div class="contact-row">
+            <span class="contact-label">Location</span>
+            <span class="contact-value">Lahore, Pakistan</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
 </div>
-<a class="nav-cta" href="#contact">Get in touch</a>
-</div>
-</nav>
-<header class="hero">
-<div class="wrap hero-grid">
-<div>
-<div class="eyebrow">Open to internships — Summer 2026</div>
-<h1 class="headline">AI &amp; software,<br><em>built to actually run.</em></h1>
-<p class="hero-sub">I'm a 2nd-year BS Artificial Intelligence student at ITU Lahore. I design systems end to end — from streaming pipelines and vector search to full-stack products people can actually open and use.</p>
-<div class="hero-actions">
-<a class="btn btn-primary" href="#projects">See my work →</a>
-<a class="btn btn-secondary" href="#contact">Get in touch</a>
-</div>
-<p class="hero-note">6 projects shipped · 4 fully deployed · CGPA 3.19/4.0</p>
-</div>
-<div class="hero-card">
-<div class="hero-card-greet">Currently building</div>
-<div class="hero-card-name">Aiza's build profile</div>
-<div class="profile-row">
-<span class="profile-row-label">Projects shipped</span>
-<span class="profile-score">6</span>
-</div>
-<div class="checklist">
-<div class="check-item"><span class="check-mark">✓</span> AI virtual try-on shopping app, live</div>
-<div class="check-item"><span class="check-mark">✓</span> Full-stack product, deployed live</div>
-<div class="check-item"><span class="check-mark">✓</span> Computer vision feature, in production</div>
-</div>
-<div class="stat-row">
-<div class="stat-pill">
-<div class="label">Deployed projects</div>
-<div class="value up">4 live</div>
-</div>
-<div class="stat-pill">
-<div class="label">Core stack</div>
-<div class="value">Python · SQL</div>
-</div>
-</div>
-</div>
-</div>
-</header>
-<section class="projects-section" id="projects">
-<div class="wrap">
-<div class="section-tag">Selected work</div>
-<h2 class="section-h">Six builds, one habit: ship it</h2>
-<p class="section-sub">From real-time data pipelines to full-stack products and classic algorithms — each project below was built, tested, and (where it counts) deployed.</p>
-<div class="project-grid">
-<div class="proj-card featured">
-<div class="proj-icon">👕</div>
-<span class="live-badge">Deployed</span>
-<div class="proj-card-title">Zwitter — Clothing Brand App</div>
-<p class="proj-card-desc">Full-stack Flutter and Dart clothing brand app with a standout feature — AI-powered virtual try-on, so shoppers can see an outfit on themselves before buying. Product listings, cart, and checkout, published live on the Play Store.</p>
-<div class="proj-stack">
-<span class="proj-chip">Flutter</span><span class="proj-chip">Dart</span><span class="proj-chip">AI Virtual Try-On</span><span class="proj-chip">Android</span>
-</div>
-</div>
-<div class="proj-card featured">
-<div class="proj-icon">💊</div>
-<span class="live-badge">Deployed</span>
-<div class="proj-card-title">Fake Medicine Detector</div>
-<p class="proj-card-desc">ML classifier distinguishing genuine from counterfeit medicines using NLP-based feature extraction against the official DRAP drug registry.</p>
-<div class="proj-meta">Built with only foundational libraries — no shortcuts allowed</div>
-<div class="proj-stack">
-<span class="proj-chip">PyTorch</span><span class="proj-chip">NumPy</span><span class="proj-chip">NLP</span>
-</div>
-</div>
-<div class="proj-card featured">
-<div class="proj-icon">💇🏽‍♀️</div>
-<span class="live-badge">Deployed</span>
-<div class="proj-card-title">HairGenie</div>
-<p class="proj-card-desc">AI-powered haircare recommendation platform with a multi-database architecture — PostgreSQL, MongoDB, and Redis each doing a distinct job. Live and fully deployed.</p>
-<div class="proj-stack">
-<span class="proj-chip">Next.js</span><span class="proj-chip">Supabase</span><span class="proj-chip">MongoDB</span>
-</div>
-<a href="https://gethairgenie.vercel.app" target="_blank" rel="noopener" style="color:#9BD9A6;font-size:12.5px;font-weight:600;">Visit live site →</a>
-</div>
-<div class="proj-card featured">
-<div class="proj-icon">🍽️</div>
-<span class="live-badge">Deployed</span>
-<div class="proj-card-title">Restomatic</div>
-<p class="proj-card-desc">Restaurant management platform with an AI Food Finder — photo goes in, matching dish comes out, using vision plus fuzzy matching.</p>
-<div class="proj-stack">
-<span class="proj-chip">Flutter</span><span class="proj-chip">Flask</span><span class="proj-chip">MySQL</span>
-</div>
-<a href="https://restaurant.nalexustechnologies.com" target="_blank" rel="noopener" style="color:#9BD9A6;font-size:12.5px;font-weight:600;">Visit live site →</a>
-</div>
-<div class="proj-card">
-<div class="proj-icon">🧬</div>
-<div class="proj-card-title">Hospital Management System</div>
-<p class="proj-card-desc">Relational database managing patient records, appointments, and billing — fully normalized, schema-first design.</p>
-<div class="proj-meta">Normalized to 3NF</div>
-<div class="proj-stack">
-<span class="proj-chip">SQL</span><span class="proj-chip">Relational Design</span>
-</div>
-</div>
-<div class="proj-card">
-<div class="proj-icon">♟️</div>
-<div class="proj-card-title">AI Game Suite</div>
-<p class="proj-card-desc">Chess, Snake, Tic-Tac-Toe (vs AI), and Candy Crush — a full suite of classic games built with clean object-oriented design.</p>
-<div class="proj-meta">Minimax + alpha-beta pruning for Chess</div>
-<div class="proj-stack">
-<span class="proj-chip">C++</span><span class="proj-chip">AI Algorithms</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="process">
-<div class="wrap">
-<div class="section-tag">How I work</div>
-<h2 class="section-h">From coursework to something real</h2>
-<p class="section-sub">Every project follows the same path — understand the real constraint, design around it, then make sure it actually runs somewhere other than my laptop.</p>
-<div class="process-grid">
-<div class="process-step">
-<div class="step-num">01</div>
-<div class="step-title">Understand the real constraint</div>
-<div class="step-body">Whether it's "use only foundational libraries" or "must support real-time data" — I design around the actual limitation, not a simplified version of it.</div>
-</div>
-<div class="process-step">
-<div class="step-num">02</div>
-<div class="step-title">Build the full pipeline</div>
-<div class="step-body">Data layer, logic layer, interface — built and connected end to end, so the system works as a whole, not as disconnected parts.</div>
-</div>
-<div class="process-step">
-<div class="step-num">03</div>
-<div class="step-title">Ship it, not just submit it</div>
-<div class="step-body">Where the project allows it, I deploy — a live URL, an APK, a working demo — because that's the difference between a grade and a portfolio piece.</div>
-</div>
-</div>
-</div>
-</section>
-<section class="projects-section" id="skills">
-<div class="wrap">
-<div class="section-tag">Toolbox</div>
-<h2 class="section-h">What I build with</h2>
-<div class="skills-wrap">
-<div class="skill-card">
-<div class="skill-card-title">Languages</div>
-<div class="skill-tag-row">
-<span class="skill-tag">Python</span>
-<span class="skill-tag">C++</span>
-<span class="skill-tag">Dart</span>
-<span class="skill-tag">SQL</span>
-</div>
-</div>
-<div class="skill-card">
-<div class="skill-card-title">Data &amp; Infra</div>
-<div class="skill-tag-row">
-<span class="skill-tag">PostgreSQL</span>
-<span class="skill-tag">MongoDB</span>
-<span class="skill-tag">Redis</span>
-<span class="skill-tag">Kafka</span>
-<span class="skill-tag">Spark</span>
-</div>
-</div>
-<div class="skill-card">
-<div class="skill-card-title">AI / ML</div>
-<div class="skill-tag-row">
-<span class="skill-tag">PyTorch</span>
-<span class="skill-tag">FAISS</span>
-<span class="skill-tag">Groq API</span>
-<span class="skill-tag">NLP</span>
-</div>
-</div>
-<div class="skill-card">
-<div class="skill-card-title">Frameworks</div>
-<div class="skill-tag-row">
-<span class="skill-tag">Flutter</span>
-<span class="skill-tag">FastAPI</span>
-<span class="skill-tag">Next.js</span>
-<span class="skill-tag">Git</span>
-</div>
-</div>
-</div>
-<div class="coursework-row">
-<span class="course-pill">Advanced Database Management Systems</span>
-<span class="course-pill">Programming for AI</span>
-<span class="course-pill">Software Engineering</span>
-<span class="course-pill">Project Management</span>
-<span class="course-pill">Object Oriented Programming</span>
-<span class="course-pill">Data Structures</span>
-<span class="course-pill">Linear Algebra</span>
-</div>
-</div>
-</section>
-<section id="about">
-<div class="wrap">
-<div class="section-tag">About</div>
-<h2 class="section-h">The person behind the projects</h2>
-<div class="about-grid">
-<div class="about-photo">
-<img src="assets/aiza.jpg" alt="Aiza Shahzad">
-</div>
-<div class="about-bio">
-<p>I'm a <strong>2nd-year BS Artificial Intelligence student</strong> at Information Technology University, Lahore. I care less about finishing an assignment and more about whether something actually <strong>runs</strong> — which is why most of my projects end in a real deployment, not just a repo with a README.</p>
-<p>My work leans toward the <strong>data-and-infrastructure side of AI</strong> — streaming pipelines, vector search, multi-database architecture — but I'm just as comfortable building a product end to end when a project calls for it.</p>
-<p>Right now, I'm looking for an <strong>internship</strong> where I can work on real systems at scale, alongside people who care about shipping as much as I do.</p>
-<div class="edu-card" style="margin-top:28px;margin-left:0;">
-<div class="edu-left">
-<div class="edu-school">Information Technology University, Lahore</div>
-<div class="edu-degree">BS Artificial Intelligence · 2nd Year, 4th Semester</div>
-</div>
-<div class="edu-gpa-badge">CGPA 3.19 / 4.0</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="projects-section">
-<div class="wrap">
-<div class="section-tag">Why work with me</div>
-<h2 class="section-h">What I bring to a team</h2>
-<div class="bring-grid">
-<div class="bring-card">
-<div class="bring-quote">"Comfortable across the full stack — databases, backend, and AI layer, not just one slice."</div>
-<div class="bring-who"><strong>Range —</strong> SQL schemas to Kafka pipelines to Flutter apps</div>
-</div>
-<div class="bring-card">
-<div class="bring-quote">"Resolves real environment problems — Docker, Windows, dependency conflicts — instead of stopping at the first error."</div>
-<div class="bring-who"><strong>Persistence —</strong> shipped through real infra issues</div>
-</div>
-<div class="bring-card">
-<div class="bring-quote">"Treats deployment as part of the project, not an optional extra step at the end."</div>
-<div class="bring-who"><strong>Ownership —</strong> 4 of 6 projects fully live</div>
-</div>
-</div>
-</div>
-</section>
-<section id="contact">
-<div class="wrap">
-<div class="final-cta">
-<h2>Looking for an intern who ships?</h2>
-<p>I'm actively looking for AI or software engineering internships where I can work on real systems at scale. Let's talk.</p>
-<div class="contact-links-row">
-<a class="contact-link-btn whatsapp" href="https://wa.me/923334367214" target="_blank" rel="noopener">💬 WhatsApp: +92 333 4367214</a>
-<a class="contact-link-btn" href="mailto:aizashahzad25@gmail.com">✉ Email me</a>
-</div>
-</div>
-</div>
-</section>
-<footer>
-<div class="wrap">
-<div class="footer-grid">
-<div>
-<div class="footer-logo">Aiza Shahzad</div>
-<p class="footer-tag">AI engineering student building real, deployable systems.</p>
-</div>
-<div class="footer-links">
-<div class="footer-col">
-<div class="footer-col-title">Site</div>
-<a href="#projects">Projects</a>
-<a href="#skills">Skills</a>
-<a href="#about">About</a>
-</div>
-<div class="footer-col">
-<div class="footer-col-title">Connect</div>
-<a href="mailto:aizashahzad25@gmail.com">Email</a>
-<a href="https://wa.me/923334367214" target="_blank" rel="noopener">WhatsApp</a>
-<a href="https://linkedin.com/in/aiza-shahzad" target="_blank" rel="noopener">LinkedIn</a>
-<a href="https://github.com/Aizachaudary" target="_blank" rel="noopener">GitHub</a>
-</div>
-</div>
-</div>
-<div class="footer-bottom">© 2026 Aiza Shahzad. Built with intent.</div>
-</div>
-</footer>
+
+<script>
+const navItems = document.querySelectorAll('.nav-item');
+const panels = document.querySelectorAll('.panel');
+const sidebar = document.getElementById('sidebar');
+const menuToggle = document.getElementById('menuToggle');
+
+navItems.forEach(item => {
+  item.addEventListener('click', () => {
+    const target = item.getAttribute('data-panel');
+    navItems.forEach(n => n.classList.remove('active'));
+    panels.forEach(p => p.classList.remove('active'));
+    item.classList.add('active');
+    document.getElementById('panel-' + target).classList.add('active');
+    window.scrollTo(0,0);
+    sidebar.classList.remove('open');
+  });
+});
+
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+});
+</script>
 </body>
 </html>
- 
